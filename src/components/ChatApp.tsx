@@ -24,11 +24,17 @@ export function ChatApp() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isChoosing, setIsChoosing] = useState(false);
   const bottomRef = useRef<HTMLDivElement | null>(null);
+  const resultRef = useRef<HTMLDivElement | null>(null);
 
   const currentNode = useMemo(() => getTreeNode(nodeId), [nodeId]);
   const progress = started ? currentNode.progress : 0;
 
   useEffect(() => {
+    if (currentNode.type === "result") {
+      resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+
     bottomRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   }, [messages, currentNode.type]);
 
@@ -121,9 +127,8 @@ export function ChatApp() {
               </div>
             </div>
 
-            <div className="relative mt-8 h-36 overflow-hidden">
-              <img src="/images/dog.png" alt="" aria-hidden className="absolute bottom-0 left-7 h-32 w-32 object-contain" />
-              <img src="/images/cat.png" alt="" aria-hidden className="absolute bottom-0 right-8 h-32 w-32 object-contain" />
+            <div className="mt-8 flex h-36 items-end justify-center overflow-hidden">
+              <img src="/images/start-pets.png" alt="" aria-hidden className="h-full max-w-full object-contain" />
             </div>
 
             <button
@@ -159,6 +164,7 @@ export function ChatApp() {
 
             {currentNode.type === "result" && resultProducts.primaryProduct ? (
               <motion.div
+                ref={resultRef}
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
