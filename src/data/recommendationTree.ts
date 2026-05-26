@@ -1,33 +1,19 @@
 import type { TreeNode } from "@/types";
 
 const ageOptions = [
-  { label: "1살 미만", value: "under1", next: "weight" },
-  { label: "1살 이상 7살 미만", value: "adult", next: "weight" },
-  { label: "7살 이상", value: "over7", next: "weight" },
+  { label: "1살 미만", value: "under1" },
+  { label: "1살 이상 7살 미만", value: "adult" },
+  { label: "7살 이상", value: "over7" },
 ];
 
 const dogAgeOptions = ageOptions.map((option) => ({
   ...option,
-  next: option.value === "under1" ? "babyDetail" : "dogWeight",
+  next: option.value === "under1" ? "babyDetail" : "dogConcern",
 }));
 const catAgeOptions = ageOptions.map((option) => ({
   ...option,
-  next: option.value === "under1" ? "babyDetail" : "catWeight",
+  next: option.value === "under1" ? "babyDetail" : "catConcern",
 }));
-
-const dogWeightOptions = [
-  { label: "3kg 미만", value: "under3", next: "dogConcern" },
-  { label: "3kg 이상 7kg 미만", value: "3to7", next: "dogConcern" },
-  { label: "7kg 이상 15kg 미만", value: "7to15", next: "dogConcern" },
-  { label: "15kg 이상", value: "over15", next: "dogConcern" },
-];
-
-const catWeightOptions = [
-  { label: "3kg 미만", value: "under3", next: "catConcern" },
-  { label: "3kg 이상 7kg 미만", value: "3to7", next: "catConcern" },
-  { label: "7kg 이상 15kg 미만", value: "7to15", next: "catConcern" },
-  { label: "15kg 이상", value: "over15", next: "catConcern" },
-];
 
 export const recommendationTree: Record<string, TreeNode> = {
   start: {
@@ -53,20 +39,6 @@ export const recommendationTree: Record<string, TreeNode> = {
     progress: 24,
     message: "고양이 나이는 어떻게 되나요?",
     options: catAgeOptions,
-  },
-  dogWeight: {
-    id: "dogWeight",
-    type: "question",
-    progress: 38,
-    message: "몸무게는 어느 정도인가요?",
-    options: dogWeightOptions,
-  },
-  catWeight: {
-    id: "catWeight",
-    type: "question",
-    progress: 38,
-    message: "몸무게는 어느 정도인가요?",
-    options: catWeightOptions,
   },
   babyDetail: {
     id: "babyDetail",

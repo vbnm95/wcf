@@ -11,6 +11,8 @@ type ResultCardProps = {
   onRestart: () => void;
 };
 
+const KAKAO_CHANNEL_URL = "http://pf.kakao.com/_fJZab";
+
 export function ResultCard({ result, primaryProduct, secondaryProducts, onRestart }: ResultCardProps) {
   return (
     <section className="rounded-[28px] bg-white p-5 shadow-[0_18px_48px_rgba(56,105,163,0.14)] ring-1 ring-[#E7F0FA]">
@@ -73,7 +75,15 @@ export function ResultCard({ result, primaryProduct, secondaryProducts, onRestar
             <ExternalLink className="h-4 w-4" aria-hidden />
           </a>
         ) : (
-          <div className="rounded-2xl bg-[#F3F8FF] px-4 py-3 text-center text-sm font-semibold text-[#657489]">제품 링크 준비중</div>
+          <a
+            href={KAKAO_CHANNEL_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#FEE500] px-4 py-3 text-sm font-bold text-[#191919] shadow-[0_10px_22px_rgba(254,229,0,0.26)] transition hover:bg-[#FADA0A]"
+          >
+            웰케어 카카오채널 문의하기
+            <ExternalLink className="h-4 w-4" aria-hidden />
+          </a>
         )}
         <button
           type="button"
