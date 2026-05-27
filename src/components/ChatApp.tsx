@@ -86,7 +86,7 @@ export function ChatApp() {
           </div>
           <div className="px-8 pb-8 pt-16">
             <div className="mx-auto max-w-[320px] text-center">
-              <img src="/images/웰케어 로고.png" alt="웰케어 로고" className="mx-auto mb-7 h-10 w-auto object-contain" />
+              <img src="/images/welcare-logo.png" alt="웰케어 로고" className="mx-auto mb-7 h-10 w-auto object-contain" />
               <h1 className="text-[28px] font-extrabold leading-9 tracking-normal text-[#173A63]">우리 아이 웰케어 찾기</h1>
               <div className="mt-9 flex items-center gap-3">
                 <div className="h-2 flex-1 overflow-hidden rounded-full bg-[#E9EEF4]">

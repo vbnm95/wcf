@@ -46,11 +46,11 @@ export const recommendationTree: Record<string, TreeNode> = {
     progress: 48,
     message: "어린 아이에게 어떤 도움이 가장 필요하신가요?",
     options: [
-      { label: "퍼피/키튼 장 건강이 걱정돼요", value: "babyGut", next: "resultTheragelBaby" },
+      { label: "퍼피/키튼 장 건강이 걱정돼요", value: "babyGut", next: "largeTheragelBaby" },
       {
         label: "설사, 구토, 식욕저하가 있어요",
         value: "babySymptom",
-        next: "resultTheragelBabyCaution",
+        next: "largeTheragelBabyCaution",
       },
       { label: "약 먹이는 게 힘들어요", value: "medicine", next: "resultWelcareMedi" },
       { label: "맛이나 제형 때문에 잘 안 먹어요", value: "feeding", next: "resultWelcareLactodrop" },
@@ -90,9 +90,9 @@ export const recommendationTree: Record<string, TreeNode> = {
     options: [
       { label: "설사, 묽은 변, 혈변이 걱정돼요", value: "stool", next: "resultWelcareGI" },
       { label: "공복토나 복명음이 신경 쓰여요", value: "gi", next: "resultWelcareGI" },
-      { label: "가루 타입 급여가 걱정돼요", value: "powder", next: "resultWelcareDaily" },
-      { label: "기본 겔 유산균을 찾고 있어요", value: "basic", next: "resultWelcareDog" },
-      { label: "프리미엄 겔 유산균을 보고 싶어요", value: "premium", next: "resultTheragelDog" },
+      { label: "가루 타입 유산균 급여가 걱정돼요", value: "powder", next: "largeWelcareDaily" },
+      { label: "기본 겔 유산균 + 소화효소 제품을 찾고 있어요", value: "basic", next: "resultWelcareDog" },
+      { label: "프리미엄 제품을 찾고 있어요", value: "premium", next: "largeTheragelDog" },
     ],
   },
   catGutDetail: {
@@ -103,10 +103,10 @@ export const recommendationTree: Record<string, TreeNode> = {
     options: [
       { label: "설사, 묽은 변, 혈변이 걱정돼요", value: "stool", next: "resultWelcareGI" },
       { label: "공복토나 복명음이 신경 쓰여요", value: "gi", next: "resultWelcareGI" },
-      { label: "가루 타입 급여가 걱정돼요", value: "powder", next: "resultWelcareDaily" },
-      { label: "기본 겔 유산균을 찾고 있어요", value: "basic", next: "resultWelcareCat" },
-      { label: "프리미엄 겔 유산균을 보고 싶어요", value: "premium", next: "resultTheragelCat" },
-      { label: "헤어볼 고민도 있어요", value: "hairball", next: "resultTheragelCat" },
+      { label: "가루 타입 유산균 급여가 걱정돼요", value: "powder", next: "largeWelcareDaily" },
+      { label: "기본 겔 유산균 + 소화효소 제품을 찾고 있어요", value: "basic", next: "resultWelcareCat" },
+      { label: "프리미엄 제품을 찾고 있어요", value: "premium", next: "largeTheragelCat" },
+      { label: "헤어볼 고민도 있어요", value: "hairball", next: "largeTheragelCat" },
     ],
   },
   dogFeedingDetail: {
@@ -167,6 +167,56 @@ export const recommendationTree: Record<string, TreeNode> = {
       { label: "아니요, 처음부터 다시 볼게요", value: "no", next: "start" },
     ],
   },
+  largeWelcareDaily: {
+    id: "largeWelcareDaily",
+    type: "question",
+    progress: 88,
+    message: "웰케어데일리는 대용량 구성도 있어요. 대용량 제품이 필요하신가요?",
+    options: [
+      { label: "네, 90포 대용량으로 보고 싶어요", value: "large", next: "resultWelcareDailyLarge" },
+      { label: "아니요, 기본 용량으로 볼게요", value: "standard", next: "resultWelcareDaily" },
+    ],
+  },
+  largeTheragelDog: {
+    id: "largeTheragelDog",
+    type: "question",
+    progress: 88,
+    message: "테라겔도그는 대용량 구성도 있어요. 대용량 제품이 필요하신가요?",
+    options: [
+      { label: "네, 150포 대용량으로 보고 싶어요", value: "large", next: "resultTheragelDogLarge" },
+      { label: "아니요, 기본 용량으로 볼게요", value: "standard", next: "resultTheragelDog" },
+    ],
+  },
+  largeTheragelCat: {
+    id: "largeTheragelCat",
+    type: "question",
+    progress: 88,
+    message: "테라겔캣은 대용량 구성도 있어요. 대용량 제품이 필요하신가요?",
+    options: [
+      { label: "네, 150포 대용량으로 보고 싶어요", value: "large", next: "resultTheragelCatLarge" },
+      { label: "아니요, 기본 용량으로 볼게요", value: "standard", next: "resultTheragelCat" },
+    ],
+  },
+  largeTheragelBaby: {
+    id: "largeTheragelBaby",
+    type: "question",
+    progress: 76,
+    message: "테라겔베이비는 대용량 구성도 있어요. 대용량 제품이 필요하신가요?",
+    options: [
+      { label: "네, 150포 대용량으로 보고 싶어요", value: "large", next: "resultTheragelBabyLarge" },
+      { label: "아니요, 기본 용량으로 볼게요", value: "standard", next: "resultTheragelBaby" },
+    ],
+  },
+  largeTheragelBabyCaution: {
+    id: "largeTheragelBabyCaution",
+    type: "question",
+    progress: 76,
+    message: "테라겔베이비는 대용량 구성도 있어요. 대용량 제품이 필요하신가요?",
+    options: [
+      { label: "네, 150포 대용량으로 보고 싶어요", value: "large", next: "resultTheragelBabyLargeCaution" },
+      { label: "아니요, 기본 용량으로 볼게요", value: "standard", next: "resultTheragelBabyCaution" },
+    ],
+  },
   resultTheragelDog: {
     id: "resultTheragelDog",
     type: "result",
@@ -175,6 +225,15 @@ export const recommendationTree: Record<string, TreeNode> = {
     message: "강아지 장 건강을 프리미엄 겔 유산균으로 관리하고 싶다면 테라겔 도그를 먼저 확인해보세요.",
     primaryProductId: "theragel-dog",
     secondaryProductIds: ["welcare-dog", "welcare-daily"],
+  },
+  resultTheragelDogLarge: {
+    id: "resultTheragelDogLarge",
+    type: "result",
+    progress: 100,
+    careType: "강아지 프리미엄 겔 유산균 대용량형",
+    message: "강아지 장 건강을 꾸준히 관리할 대용량 제품이 필요하다면 테라겔도그 150포 대용량을 추천합니다.",
+    primaryProductId: "theragel-dog-large",
+    secondaryProductIds: ["theragel-dog", "welcare-dog"],
   },
   resultTheragelCat: {
     id: "resultTheragelCat",
@@ -185,6 +244,15 @@ export const recommendationTree: Record<string, TreeNode> = {
     primaryProductId: "theragel-cat",
     secondaryProductIds: ["welcare-cat", "welcare-daily"],
   },
+  resultTheragelCatLarge: {
+    id: "resultTheragelCatLarge",
+    type: "result",
+    progress: 100,
+    careType: "고양이 장·헤어볼 케어 대용량형",
+    message: "고양이 장 건강과 헤어볼 고민을 꾸준히 관리할 대용량 제품이 필요하다면 테라겔캣 150포 대용량을 추천합니다.",
+    primaryProductId: "theragel-cat-large",
+    secondaryProductIds: ["theragel-cat", "welcare-cat"],
+  },
   resultTheragelBaby: {
     id: "resultTheragelBaby",
     type: "result",
@@ -194,6 +262,15 @@ export const recommendationTree: Record<string, TreeNode> = {
     primaryProductId: "theragel-baby",
     secondaryProductIds: ["welcare-daily", "welcare-gi"],
   },
+  resultTheragelBabyLarge: {
+    id: "resultTheragelBabyLarge",
+    type: "result",
+    progress: 100,
+    careType: "퍼피·키튼 베이비 케어 대용량형",
+    message: "어린 강아지와 고양이의 장 건강 루틴을 넉넉하게 준비하고 싶다면 테라겔베이비 150포 대용량을 추천합니다.",
+    primaryProductId: "theragel-baby-large",
+    secondaryProductIds: ["theragel-baby", "welcare-daily"],
+  },
   resultTheragelBabyCaution: {
     id: "resultTheragelBabyCaution",
     type: "result",
@@ -202,6 +279,16 @@ export const recommendationTree: Record<string, TreeNode> = {
     message: "어린 강아지와 고양이의 장 건강을 고려한다면 테라겔 베이비를 확인해볼 수 있습니다. 다만 증상이 있다면 제품 급여보다 진료 상담이 우선입니다.",
     primaryProductId: "theragel-baby",
     secondaryProductIds: ["welcare-gi", "welcare-daily"],
+    caution: "어린 반려동물에게 설사, 구토, 식욕저하가 보이면 탈수나 질환 가능성이 있어 수의사 진료를 먼저 권장합니다.",
+  },
+  resultTheragelBabyLargeCaution: {
+    id: "resultTheragelBabyLargeCaution",
+    type: "result",
+    progress: 100,
+    careType: "퍼피·키튼 장 컨디션 대용량 확인형",
+    message: "어린 강아지와 고양이의 장 건강 루틴을 넉넉하게 준비하고 싶다면 테라겔베이비 150포 대용량을 확인해볼 수 있습니다. 다만 증상이 있다면 제품 급여보다 진료 상담이 우선입니다.",
+    primaryProductId: "theragel-baby-large",
+    secondaryProductIds: ["theragel-baby", "welcare-gi"],
     caution: "어린 반려동물에게 설사, 구토, 식욕저하가 보이면 탈수나 질환 가능성이 있어 수의사 진료를 먼저 권장합니다.",
   },
   resultWelcareDog: {
@@ -230,6 +317,15 @@ export const recommendationTree: Record<string, TreeNode> = {
     message: "가루 날림이나 급여 부담이 걱정된다면 짜먹는 겔 타입의 웰케어 데일리를 확인해보세요.",
     primaryProductId: "welcare-daily",
     secondaryProductIds: ["welcare-lactodrop", "welcare-gi"],
+  },
+  resultWelcareDailyLarge: {
+    id: "resultWelcareDailyLarge",
+    type: "result",
+    progress: 100,
+    careType: "가루 타입 대체 유산균 대용량형",
+    message: "가루 날림이나 급여 부담이 걱정되고 대용량 제품이 필요하다면 웰케어데일리 90포 대용량을 추천합니다.",
+    primaryProductId: "welcare-daily-large",
+    secondaryProductIds: ["welcare-daily", "welcare-lactodrop"],
   },
   resultWelcareLactodrop: {
     id: "resultWelcareLactodrop",

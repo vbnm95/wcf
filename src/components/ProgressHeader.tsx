@@ -9,7 +9,7 @@ export function ProgressHeader({ progress }: ProgressHeaderProps) {
     <header className="sticky top-0 z-10 border-b border-[#EDF2F7] bg-[#FFFDF9]/90 px-6 py-5 backdrop-blur">
       <div className="flex items-center justify-between gap-3">
         <div className="flex min-w-0 items-center gap-3">
-          <img src="/images/웰케어 로고.png" alt="웰케어 로고" className="h-8 w-auto shrink-0 object-contain" />
+          <img src="/images/welcare-logo.png" alt="웰케어 로고" className="h-8 w-auto shrink-0 object-contain" />
           <div className="min-w-0">
             <p className="text-xs font-bold text-[#6AABF7]">Wellcare Finder</p>
             <h1 className="truncate text-xl font-extrabold tracking-normal text-[#173A63]">우리 아이 웰케어 찾기</h1>

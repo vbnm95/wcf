@@ -81,7 +81,7 @@ export function ResultCard({ result, primaryProduct, secondaryProducts, onRestar
             rel="noreferrer"
             className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#FEE500] px-4 py-3 text-sm font-bold text-[#191919] shadow-[0_10px_22px_rgba(254,229,0,0.26)] transition hover:bg-[#FADA0A]"
           >
-            웰케어 카카오채널 문의하기
+            웰케어 카카오톡채널 추가하기
             <ExternalLink className="h-4 w-4" aria-hidden />
           </a>
         )}
